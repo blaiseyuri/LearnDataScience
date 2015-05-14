@@ -11,23 +11,25 @@ df = pd.read_csv('../datasets/loanf.csv')
 # FICO Score on x-axis, Interest Rate on y-axis
 intrate = df['Interest.Rate']
 fico = df['FICO.Score']
-p = plt.plot(fico,intrate,'o')
+p = plt.plot(fico, intrate, 'o')
 ax = plt.gca()
 xt = ax.set_xlabel('FICO Score')
 yt = ax.set_ylabel('Interest Rate %')
 plt.show()
 
-#Lesson A2 Linear Regression - Data Exploration
+# Lesson A2 Linear Regression - Data Exploration
 loansData = pd.read_csv('../datasets/loansData.csv')
 
-
-
 # functions for converting data
+
+
 def p2f(x):
   return float(x.strip("%"))/100
 
+
 def m2i(x):
   return int(x.strip("months"))
+
 
 def ficoMid(x):
   num1 = int(x[:3])
@@ -50,4 +52,3 @@ loansParsed['FICO'] = Loanfilter(loansData['FICO.Range'], ficoMid)
 loansParsed['LoanMons'] = Loanfilter(loansData['Loan.Length'], m2i)
 
 print loansParsed[0:3]
-
