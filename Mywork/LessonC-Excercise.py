@@ -24,7 +24,18 @@ model = rfc.fit(train_data, train_value)
 
 print rfc.oob_score_
 
+# Looks at each variables importance
 fi = enumerate(rfc.feature_importances_)
 cols = train.columns
-print [(value,cols[i]) for (i,value) in fi]
 
+data = []
+for (i,value) in fi:
+  data.append([cols[i], value])
+
+result = pd.DataFrame(data, None, ['variable', 'importance'])
+
+# Prints top 5 variables
+result = result.sort('importance', ascending = False)
+print result[:5]
+
+# Decided to stop here with the excercise I was able to add the addition 450+ variables and see their importances
